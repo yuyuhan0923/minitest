@@ -1,4 +1,5 @@
 项目演示
+
 点击观看完整演示视频（B 站）：https://www.bilibili.com/video/BV17MeJ6uEZD/?spm_id_from=333.1387.list.card_archive.click&vd_source=6502eb51fefb8a7f0e166d4872f4e459
 
 项目简介
@@ -40,11 +41,12 @@
 4. 微信小程序：填入 AppID 与云环境 ID，配置合法域名，上传代码提交发布。
 
 Project Demo
+
 Click to watch the full demo video (Bilibili): https://www.bilibili.com/video/BV17MeJ6uEZD/?spm_id_from=333.1387.list.card_archive.click&vd_source=6502eb51fefb8a7f0e166d4872f4e459
 
 Project Introduction
 
-[点击查看 PDF 版](presentation.pdf)
+[Click to view the English PDF version](presentation.pdf)
 
 This project is a WeChat Mini‑Program customer‑acquisition system for AI algorithm education and training, built on a separation‑of‑frontend‑and‑backend architecture. Using AI capability assessment as a traffic hook, it realizes user acquisition, capability stratification, lead collection and conversion. Equipped with a PC‑side Vue3 management background and an embedded management panel inside the mini‑program, the system collects full‑link user behavior data, computes operational KPIs, and supports configuration of question banks and courses. It forms a complete business loop: **Acquisition‑Activation‑Lead Generation‑Conversion‑Data‑Driven Optimization**.
 
