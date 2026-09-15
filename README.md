@@ -1,3 +1,6 @@
+项目演示
+点击观看完整演示视频（B 站）：https://www.bilibili.com/video/BV17MeJ6uEZD/?spm_id_from=333.1387.list.card_archive.click&vd_source=6502eb51fefb8a7f0e166d4872f4e459
+
 项目简介
 
 本项目是面向 AI 算法教育培训领域的微信小程序获客系统，采用前后端分离架构。以 AI 能力测评作为流量钩子，完成用户拉新、能力分层、线索留资与转化，配套 PC 端 Vue3 管理后台以及小程序内嵌管理面板，实现全链路用户行为数据采集、运营指标统计、题库与课程运营配置，形成拉新‑激活‑留资‑转化‑数据优化完整商业闭环。
@@ -34,6 +37,8 @@
 3. Vue 管理后台：`npm run build`打包 dist，Nginx 部署静态页面，配置`/api`反向代理指向后端 8083 端口。
 4. 微信小程序：填入 AppID 与云环境 ID，配置合法域名，上传代码提交发布。
 
+Project Demo
+Click to watch the full demo video (Bilibili): https://www.bilibili.com/video/BV17MeJ6uEZD/?spm_id_from=333.1387.list.card_archive.click&vd_source=6502eb51fefb8a7f0e166d4872f4e459
 
 Project Introduction
 
