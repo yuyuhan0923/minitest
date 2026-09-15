@@ -46,7 +46,7 @@ Click to watch the full demo video (Bilibili): https://www.bilibili.com/video/BV
 
 Project Introduction
 
-[Click to view the English PDF version](presentation.pdf)
+[Click to view the English PDF version](AI算法测评获客小程序.pdf)
 
 This project is a WeChat Mini‑Program customer‑acquisition system for AI algorithm education and training, built on a separation‑of‑frontend‑and‑backend architecture. Using AI capability assessment as a traffic hook, it realizes user acquisition, capability stratification, lead collection and conversion. Equipped with a PC‑side Vue3 management background and an embedded management panel inside the mini‑program, the system collects full‑link user behavior data, computes operational KPIs, and supports configuration of question banks and courses. It forms a complete business loop: **Acquisition‑Activation‑Lead Generation‑Conversion‑Data‑Driven Optimization**.
 
