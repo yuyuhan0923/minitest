@@ -3,6 +3,8 @@
 
 项目简介
 
+[点击查看 PDF 版](AI算法测评获客小程序.pdf)
+
 本项目是面向 AI 算法教育培训领域的微信小程序获客系统，采用前后端分离架构。以 AI 能力测评作为流量钩子，完成用户拉新、能力分层、线索留资与转化，配套 PC 端 Vue3 管理后台以及小程序内嵌管理面板，实现全链路用户行为数据采集、运营指标统计、题库与课程运营配置，形成拉新‑激活‑留资‑转化‑数据优化完整商业闭环。
 
 技术栈：
@@ -41,6 +43,8 @@ Project Demo
 Click to watch the full demo video (Bilibili): https://www.bilibili.com/video/BV17MeJ6uEZD/?spm_id_from=333.1387.list.card_archive.click&vd_source=6502eb51fefb8a7f0e166d4872f4e459
 
 Project Introduction
+
+[点击查看 PDF 版](presentation.pdf)
 
 This project is a WeChat Mini‑Program customer‑acquisition system for AI algorithm education and training, built on a separation‑of‑frontend‑and‑backend architecture. Using AI capability assessment as a traffic hook, it realizes user acquisition, capability stratification, lead collection and conversion. Equipped with a PC‑side Vue3 management background and an embedded management panel inside the mini‑program, the system collects full‑link user behavior data, computes operational KPIs, and supports configuration of question banks and courses. It forms a complete business loop: **Acquisition‑Activation‑Lead Generation‑Conversion‑Data‑Driven Optimization**.
 
