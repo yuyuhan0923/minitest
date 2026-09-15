@@ -1,0 +1,11 @@
+.container{padding:30rpx;background:#f5f7fa;min-height:100vh;}
+.page-title{font-size:38rpx;font-weight:600;margin-bottom:12rpx;color:#333;}
+.desc{font-size:26rpx;color:#666;margin-bottom:30rpx;}
+.loading-tip{text-align:center;padding:60rpx;color:#999;font-size:28rpx;}
+.item{background:#fff;border-radius:20rpx;padding:30rpx;margin-bottom:20rpx;}
+.info-row{display:flex;align-items:center;margin-bottom:16rpx;}
+.info-row:last-child{margin-bottom:0;}
+.label{width:160rpx;font-size:28rpx;color:#666;}
+.value{flex:1;font-size:28rpx;color:#333;}
+.tag{padding:6rpx 14rpx;border-radius:10rpx;font-size:24rpx;}
+.tag.level{background:#e8f3ff;color:#2f54eb;}

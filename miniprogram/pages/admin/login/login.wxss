@@ -1,0 +1,77 @@
+/* 页面整体 */
+.login-page {
+  min-height: 100vh;
+  background: #f5f7fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30rpx;
+}
+
+/* 登录卡片 */
+.login-card {
+  width: 100%;
+  max-width: 600rpx;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 60rpx 40rpx;
+  box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 盾牌图标 */
+.login-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+}
+
+/* 标题 */
+.login-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1d2129;
+  margin-bottom: 48rpx;
+}
+
+/* 输入框组 */
+.input-group {
+  width: 100%;
+  margin-bottom: 24rpx;
+}
+
+.input-item {
+  width: 100%;
+  height: 88rpx;
+  padding: 0 24rpx;
+  background: #f7f8fa;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.input-item::placeholder {
+  color: #999;
+}
+
+/* 登录按钮 */
+.login-btn {
+  width: 100%;
+  height: 88rpx;
+  background: #2f54eb;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 16rpx;
+  border: none;
+  margin-top: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-btn:active {
+  background: #2546d1;
+}

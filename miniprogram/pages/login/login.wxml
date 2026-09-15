@@ -1,0 +1,75 @@
+<view class="container">
+
+  <!-- ── 第一步：登录 ── -->
+  <view wx:if="{{step === 'login'}}">
+    <view class="hero">
+      <view class="hero-icon">🤖</view>
+      <view class="hero-title">AI算法能力测评</view>
+      <view class="hero-subtitle">登录后开始你的专属测评之旅</view>
+    </view>
+
+    <view class="login-card">
+      <view class="feature-list">
+        <view class="feature-item" wx:for="{{features}}" wx:key="index">
+          <text class="feature-icon">{{item.icon}}</text>
+          <text class="feature-text">{{item.text}}</text>
+        </view>
+      </view>
+
+      <button
+        class="btn-wx-login"
+        bindtap="handleLogin"
+        disabled="{{loading}}"
+      >
+        <text class="btn-icon">💬</text>
+        <text>{{loading ? '登录中...' : '微信一键登录'}}</text>
+      </button>
+
+      <view class="privacy-tip">登录即代表同意《用户协议》与《隐私政策》</view>
+    </view>
+  </view>
+
+  <!-- ── 第二步：完善头像昵称（微信官方组件，真实获取） ── -->
+  <view wx:if="{{step === 'profile'}}" class="profile-step">
+    <view class="hero">
+      <view class="hero-title">完善个人信息</view>
+      <view class="hero-subtitle">设置你的头像和昵称</view>
+    </view>
+
+    <view class="profile-card">
+      <!-- 头像选择：open-type="chooseAvatar" 是微信官方唯一合规方式 -->
+      <button
+        class="avatar-btn"
+        open-type="chooseAvatar"
+        bindchooseavatar="onChooseAvatar"
+      >
+        <image
+          wx:if="{{avatarUrl}}"
+          class="avatar-img"
+          src="{{avatarUrl}}"
+          mode="aspectFill"
+        />
+        <view wx:else class="avatar-placeholder">
+          <text class="avatar-placeholder-icon">📷</text>
+          <text class="avatar-placeholder-text">点击选择头像</text>
+        </view>
+      </button>
+
+      <!-- 昵称输入：type="nickname" 会自动弹出微信昵称键盘 -->
+      <view class="nickname-wrap">
+        <input
+          class="nickname-input"
+          type="nickname"
+          placeholder="点击填写昵称"
+          value="{{nickName}}"
+          bindinput="onNicknameInput"
+          maxlength="20"
+        />
+      </view>
+
+      <button class="btn-save" bindtap="handleSaveProfile">完成</button>
+      <view class="skip-tip" bindtap="handleSkip">跳过，稍后再设置</view>
+    </view>
+  </view>
+
+</view>

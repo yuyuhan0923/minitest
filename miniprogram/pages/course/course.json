@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "课程介绍",
+  "navigationBarBackgroundColor": "#1a1a2e",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f5f7fa"
+}

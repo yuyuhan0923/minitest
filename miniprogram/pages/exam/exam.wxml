@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="title-box">
+    <view class="title">AI能力测评</view>
+    <view class="subtitle">{{currentQuestion.category}}</view>
+  </view>
+
+  <view class="progress">第 {{currentIndex+1}} 题 / 共 18 题</view>
+
+  <view class="question">
+    <text class="q-text">{{currentQuestion.title}}</text>
+  </view>
+
+  <view class="options">
+    <view 
+      wx:for="{{currentQuestion.options}}" 
+      wx:key="index"
+      class="option {{selectedAnswer == item[0] ? 'active' : ''}}"
+      bindtap="selectOption"
+      data-value="{{item[0]}}"
+    >
+      <text class="key">{{item[0]}}</text>
+      <text class="text">{{item[1]}}</text>
+    </view>
+  </view>
+
+  <view class="btn-wrapper">
+    <view class="btn-box">
+      <button bindtap="prevQuestion" disabled="{{currentIndex==0}}">上一题</button>
+      <button bindtap="nextQuestion" disabled="{{!selectedAnswer}}">下一题</button>
+    </view>
+  </view>
+</view>

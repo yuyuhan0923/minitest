@@ -1,0 +1,157 @@
+<view class="container">
+
+  <!-- 顶部 -->
+  <view class="page-header">
+    <view class="page-title">题库管理</view>
+    <text class="total-count" wx:if="{{!loading && !error}}">共 {{total}} 题</text>
+  </view>
+
+  <!-- 搜索框 -->
+  <view class="search-bar">
+    <input
+      class="search-input"
+      placeholder="搜索题干关键词"
+      value="{{keyword}}"
+      bindinput="onKeywordInput"
+    />
+  </view>
+
+  <!-- 维度筛选 -->
+  <view class="filter-bar" wx:if="{{categories.length > 0}}">
+    <text class="filter-label">维度</text>
+    <scroll-view scroll-x class="filter-scroll">
+      <text
+        class="filter-chip {{filterCategory === '' ? 'active' : ''}}"
+        bindtap="onCategoryFilter"
+        data-val="">全部</text>
+      <text
+        wx:for="{{categories}}"
+        wx:key="*this"
+        class="filter-chip {{filterCategory === item ? 'active' : ''}}"
+        bindtap="onCategoryFilter"
+        data-val="{{item}}">{{item}}</text>
+    </scroll-view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="state-box" wx:if="{{loading}}">
+    <text class="state-text">加载中...</text>
+  </view>
+
+  <!-- 错误 -->
+  <view class="state-box" wx:elif="{{error}}">
+    <text class="error-text">{{error}}</text>
+    <text class="retry-btn" bindtap="retry">重试</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="state-box" wx:elif="{{list.length === 0}}">
+    <text class="state-text">暂无题目</text>
+  </view>
+
+  <!-- 题目列表 -->
+  <view wx:else>
+    <view
+      class="q-card"
+      wx:for="{{list}}"
+      wx:key="_id"
+      bindtap="openDetail"
+      data-id="{{item._id}}"
+    >
+      <!-- 卡片头部：序号 + 题干 + 状态 -->
+      <view class="q-head">
+        <view class="q-head-left">
+          <text class="q-order">{{item.sortOrder}}</text>
+          <text class="q-title">{{item.title}}</text>
+        </view>
+        <view
+          class="status-btn {{item.enabled ? 'enabled' : 'disabled'}} {{togglingId === item._id ? 'toggling' : ''}}"
+          catchtap="toggleEnabled"
+          data-id="{{item._id}}"
+          data-enabled="{{item.enabled}}"
+        >{{togglingId === item._id ? '...' : (item.enabled ? '启用' : '禁用')}}</view>
+      </view>
+
+      <!-- 元信息行 -->
+      <view class="q-meta">
+        <text class="meta-tag cat-tag">{{item.category}}</text>
+        <text class="meta-tag score-tag">{{item.score}} 分</text>
+        <text class="meta-tag answer-tag" wx:if="{{item.correctAnswer}}">答案 {{item.correctAnswer}}</text>
+      </view>
+
+      <!-- 选项预览（最多显示前两项） -->
+      <view class="q-options-preview">
+        <text
+          wx:for="{{item.optionsFormatted}}"
+          wx:for-item="opt"
+          wx:key="index"
+          class="opt-preview"
+        >{{opt}}</text>
+      </view>
+    </view>
+
+    <!-- 分页 -->
+    <view class="pagination">
+      <text class="page-btn {{page <= 1 ? 'disabled' : ''}}" bindtap="prevPage">上一页</text>
+      <text class="page-info">{{page}} / {{totalPages}}</text>
+      <text class="page-btn {{page >= totalPages ? 'disabled' : ''}}" bindtap="nextPage">下一页</text>
+    </view>
+  </view>
+
+</view>
+
+<!-- 详情弹层 -->
+<view class="mask" wx:if="{{detailVisible}}" bindtap="closeDetail">
+  <view class="detail-panel" catchtap="stopPropagation">
+
+    <view class="detail-header">
+      <text class="detail-title">题目详情</text>
+      <text class="detail-close" bindtap="closeDetail">✕</text>
+    </view>
+
+    <scroll-view scroll-y class="detail-body" wx:if="{{detailQuestion}}">
+
+      <view class="d-row">
+        <text class="d-label">题干</text>
+        <text class="d-value d-title">{{detailQuestion.title}}</text>
+      </view>
+      <view class="d-row">
+        <text class="d-label">维度</text>
+        <text class="d-value">{{detailQuestion.category}}</text>
+      </view>
+      <view class="d-row">
+        <text class="d-label">分值</text>
+        <text class="d-value">{{detailQuestion.score}} 分</text>
+      </view>
+      <view class="d-row">
+        <text class="d-label">排序</text>
+        <text class="d-value">{{detailQuestion.sortOrder}}</text>
+      </view>
+      <view class="d-row">
+        <text class="d-label">正确答案</text>
+        <text class="d-value answer-highlight">{{detailQuestion.correctAnswer || '-'}}</text>
+      </view>
+      <view class="d-row">
+        <text class="d-label">状态</text>
+        <text class="d-value {{detailQuestion.enabled ? 'text-green' : 'text-orange'}}">
+          {{detailQuestion.enabled ? '启用' : '禁用'}}
+        </text>
+      </view>
+
+      <!-- 选项列表（optionsWithCorrect 由 JS 预处理，含 isCorrect 标记） -->
+      <view class="d-section">
+        <text class="d-section-title">选项</text>
+        <view
+          class="d-opt-row {{opt.isCorrect ? 'correct-opt' : ''}}"
+          wx:for="{{detailQuestion.optionsWithCorrect}}"
+          wx:for-item="opt"
+          wx:key="index"
+        >
+          <text class="d-opt-label">{{opt.text}}</text>
+          <text class="correct-mark" wx:if="{{opt.isCorrect}}">✓</text>
+        </view>
+      </view>
+
+    </scroll-view>
+  </view>
+</view>

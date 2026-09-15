@@ -1,0 +1,114 @@
+.container{
+  padding: 30rpx;
+  background: #f7f8fa;
+  min-height: 100vh;
+}
+
+.title-box{
+  margin: 40rpx 0 20rpx;
+  text-align: center;
+}
+
+.title{
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtitle{
+  font-size: 26rpx;
+  color: #6366f1;
+  margin-top: 10rpx;
+}
+
+.progress{
+  text-align: center;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 40rpx;
+}
+
+.question{
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.q-text{
+  font-size: 34rpx;
+  line-height: 1.6;
+  color: #333;
+}
+
+.options{
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 60rpx;
+}
+
+.option{
+  background: #fff;
+  border: 2rpx solid #eee;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.option.active{
+  border-color: #6366f1;
+  background: #eef2ff;
+}
+
+.key{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.option.active .key{
+  background: #6366f1;
+  color: #fff;
+}
+
+.text{
+  font-size: 30rpx;
+  color: #333;
+}
+
+.btn-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-box{
+  background: #fff;
+  border-radius: 50rpx;
+  padding: 10rpx;
+  display: flex;
+  gap: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.btn-box button{
+  border-radius: 40rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+  border: none;
+  background: #6366f1;
+  color: #fff;
+}
+
+.btn-box button[disabled]{
+  background: #ddd;
+  color: #999;
+}

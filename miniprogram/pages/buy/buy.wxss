@@ -1,0 +1,183 @@
+.buy-page {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding-bottom: 60rpx;
+}
+
+.course-header { position: relative; }
+.course-cover  { width: 100%; border-radius: 0 0 24rpx 24rpx; display: block; }
+.course-title  {
+  position: absolute; bottom: 24rpx; left: 32rpx;
+  font-size: 44rpx; font-weight: 700; color: #fff;
+  text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.4);
+}
+
+.section-title {
+  font-size: 34rpx; font-weight: 600; color: #1a1a1a;
+  margin: 40rpx 0 24rpx;
+}
+
+.course-highlights {
+  background: #fff; margin: 24rpx 24rpx 0;
+  padding: 8rpx 32rpx 32rpx; border-radius: 16rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
+}
+.highlight-item {
+  font-size: 28rpx; color: #333; line-height: 1.8; margin-bottom: 12rpx;
+}
+
+.price-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff; margin: 24rpx 24rpx 0;
+  padding: 36rpx 32rpx; border-radius: 16rpx; text-align: center;
+}
+.original-price {
+  font-size: 26rpx; text-decoration: line-through;
+  opacity: 0.75; margin-bottom: 8rpx;
+}
+.current-price {
+  font-size: 56rpx; font-weight: 700; margin-bottom: 16rpx; line-height: 1.2;
+}
+.price-tip { font-size: 24rpx; opacity: 0.9; }
+
+.action-buttons {
+  display: flex; gap: 24rpx; margin: 24rpx 24rpx 0;
+}
+.btn {
+  flex: 1; height: 88rpx;
+  border-radius: 44rpx; font-size: 30rpx; font-weight: 600; border: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.btn-consult {
+  background: #fff; color: #667eea;
+  box-shadow: 0 0 0 2rpx #667eea inset;
+}
+.btn-group {
+  background: linear-gradient(135deg, #667eea, #764ba2); color: #fff;
+  box-shadow: 0 8rpx 20rpx rgba(102,126,234,0.35);
+}
+.btn::after { border: none; }
+
+.buy-buttons {
+  display: flex; gap: 24rpx; margin: 20rpx 24rpx 0;
+}
+.btn-buy-trial {
+  flex: 1; height: 88rpx;
+  border-radius: 44rpx; font-size: 30rpx; font-weight: 600; border: none;
+  display: flex; align-items: center; justify-content: center;
+  background: #fff; color: #667eea;
+  box-shadow: 0 0 0 2rpx #667eea inset;
+}
+.btn-buy-now {
+  flex: 1; height: 88rpx;
+  border-radius: 44rpx; font-size: 30rpx; font-weight: 600; border: none;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #667eea, #764ba2); color: #fff;
+  box-shadow: 0 8rpx 20rpx rgba(102,126,234,0.35);
+}
+.btn-buy-trial::after, .btn-buy-now::after { border: none; }
+
+.faq-section {
+  background: #fff; margin: 24rpx 24rpx 0;
+  padding: 8rpx 32rpx 32rpx; border-radius: 16rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
+}
+.faq-item     { margin-bottom: 28rpx; }
+.faq-item:last-child { margin-bottom: 0; }
+.faq-question { font-size: 28rpx; font-weight: 600; color: #1a1a1a; margin-bottom: 10rpx; }
+.faq-answer   { font-size: 26rpx; color: #666; line-height: 1.7; }
+
+/* 购买弹窗 */
+.popup-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popup-content {
+  width: 80%;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+}
+.popup-title {
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  color: #333;
+}
+.popup-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #666;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.price-item {
+  border-bottom: none;
+  margin-top: 10rpx;
+}
+.price {
+  font-size: 36rpx;
+  color: #ff4d4f;
+  font-weight: bold;
+}
+.popup-desc {
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+  margin: 20rpx 0 30rpx;
+}
+.popup-buttons {
+  display: flex;
+  gap: 20rpx;
+}
+.btn-cancel {
+  flex: 1;
+  height: 80rpx;
+  background: #f5f7fa;
+  color: #666;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  border: none;
+}
+.btn-confirm {
+  flex: 1;
+  height: 80rpx;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  color: #fff;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  border: none;
+}
+
+/* 老师弹窗 */
+.modal-mask {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.55); z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-card {
+  background: #fff; border-radius: 24rpx; padding: 48rpx 40rpx;
+  width: 600rpx; text-align: center;
+}
+.modal-title { font-size: 34rpx; font-weight: 700; color: #1a1a2e; margin-bottom: 32rpx; }
+.qr-image    { width: 280rpx; height: 280rpx; margin-bottom: 16rpx; }
+.qr-hint     { font-size: 22rpx; color: #999; margin-bottom: 24rpx; }
+.wechat-id-row  { display: flex; justify-content: center; align-items: center; margin-bottom: 28rpx; }
+.wechat-id-label{ font-size: 26rpx; color: #666; }
+.wechat-id-val  { font-size: 28rpx; color: #1a1a2e; font-weight: 600; }
+.modal-btns { display: flex; gap: 20rpx; margin-bottom: 24rpx; }
+.btn-modal-copy {
+  flex: 1; height: 72rpx;
+  border-radius: 36rpx;
+  background: #f0f4ff; color: #667eea; font-size: 26rpx; border: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.btn-modal-copy::after { border: none; }
+.modal-close { font-size: 26rpx; color: #999; display: block; }

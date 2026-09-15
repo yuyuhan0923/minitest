@@ -1,0 +1,86 @@
+.container{
+  padding: 20rpx;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* 用户卡片 */
+.user-card{
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.avatar{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.user-info{
+  flex: 1;
+}
+.nickname{
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+}
+.user-id{
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 6rpx;
+}
+
+/* 菜单区块 */
+.menu-section{
+  background: #fff;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+}
+.menu-title{
+  padding: 20rpx 30rpx;
+  font-size: 26rpx;
+  color: #666;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.menu-list{
+  padding: 0 30rpx;
+}
+.menu-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 0;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.menu-item:last-child{
+  border-bottom: none;
+}
+.menu-text{
+  color: #333;
+}
+.arrow{
+  color: #999;
+  font-size: 28rpx;
+}
+.version{
+  color: #999;
+  font-size: 26rpx;
+}
+
+/* 退出按钮 */
+.logout-wrapper{
+  margin-top: 40rpx;
+}
+.logout-btn{
+  width: 100%;
+  height: 88rpx;
+  border-radius: 44rpx;
+  background: #fff;
+  color: #ff4d4f;
+  border: 2rpx solid #ff4d4f;
+  font-size: 32rpx;
+}

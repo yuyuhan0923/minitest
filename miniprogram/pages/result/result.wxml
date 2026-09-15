@@ -1,0 +1,120 @@
+<!--pages/result/result.wxml-->
+<view class="result-page">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <text class="header-title">测评报告</text>
+  </view>
+
+  <!-- 分数与等级区域 -->
+  <view class="score-section">
+    <view class="score-main">
+      <text class="score-num">{{totalScore}}</text>
+      <text class="score-total">/{{maxScore}}</text>
+    </view>
+    <view class="level-tag">{{level}}</view>
+  </view>
+
+  <!-- 综合评价 -->
+  <view class="card">
+    <view class="card-title">综合评价</view>
+    <text class="card-content">{{evalText}}</text>
+  </view>
+
+  <!-- 各方向得分 -->
+  <view class="card">
+    <view class="card-title">各方向得分</view>
+    <view class="category-list">
+      <view class="category-item" wx:for="{{categoryScores}}" wx:key="index">
+        <view class="category-name">{{item.name}}</view>
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{item.percent}}%"></view>
+        </view>
+        <text class="category-score">{{item.score}}/{{item.max}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 提升建议 -->
+  <view class="card">
+    <view class="card-title">提升建议</view>
+    <view class="suggest-list">
+      <view class="suggest-item" wx:for="{{suggestions}}" wx:key="index">
+        <text class="suggest-icon">💡</text>
+        <text class="suggest-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 免费领取学习资料包 -->
+  <view class="material-card">
+    <view class="material-title">
+      <text class="gift-icon">🎁</text>
+      <text>免费领取学习资料包</text>
+    </view>
+    <text class="material-desc">AI算法路线图 · Python模板 · 面试题 · 实战案例</text>
+    <button class="material-btn" bindtap="goToMaterial">立即领取</button>
+  </view>
+
+  <!-- 加入学习社群 -->
+  <view class="card">
+    <view class="card-title">加入学习社群</view>
+    <view class="community-btns">
+      <view class="community-btn" bindtap="showTeacherQr">
+        <text class="btn-icon">👨‍🏫</text>
+        <text class="btn-text">添加老师</text>
+      </view>
+      <view class="community-btn" bindtap="showGroupQr">
+        <text class="btn-icon">👥</text>
+        <text class="btn-text">加入学习群</text>
+      </view>
+      <view class="community-btn" bindtap="goToCourse">
+        <text class="btn-icon">🎓</text>
+        <text class="btn-text blue">立即购课</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 重新测评 -->
+  <view class="restart-test" bindtap="restartExam">
+    <text>重新测评</text>
+  </view>
+
+  <!-- 老师微信弹窗（你要的排版） -->
+  <view class="modal-mask" wx:if="{{showTeacher}}" bindtap="closeTeacherModal">
+    <view class="modal-content" catchtap="stopClose">
+      <view class="modal-header">
+        <text class="modal-title">👨‍🏫 添加老师微信</text>
+      </view>
+      <view class="modal-body">
+        <image src="/images/teacher_wechat.png" class="qr-img" mode="aspectFit"></image>
+        <text class="modal-tip">长按图片可识别/保存二维码</text>
+        <text class="modal-wechat">微信号：sxy15205811430</text>
+      </view>
+      <view class="modal-footer">
+        <button class="btn-modal btn-light" bindtap="copyWechat">复制微信号</button>
+        <button class="btn-modal btn-primary" bindtap="saveTeacherQrcode">保存二维码</button>
+      </view>
+      <text class="modal-close" bindtap="closeTeacherModal">关闭</text>
+    </view>
+  </view>
+
+  <!-- 学习群二维码弹窗（你要的排版） -->
+  <view class="modal-mask" wx:if="{{showGroup}}" bindtap="closeGroupModal">
+    <view class="modal-content" catchtap="stopClose">
+      <view class="modal-header">
+        <text class="modal-title">👥 加入学习群</text>
+      </view>
+      <view class="modal-body">
+        <image src="/images/study_group.png" class="qr-img" mode="aspectFit"></image>
+        <text class="modal-tip">长按图片扫码入群</text>
+      </view>
+      <view class="modal-footer">
+        <button class="btn-modal btn-primary" bindtap="saveGroupQrcode">保存群二维码</button>
+      </view>
+      <text class="modal-close" bindtap="closeGroupModal">关闭</text>
+    </view>
+  </view>
+</view>

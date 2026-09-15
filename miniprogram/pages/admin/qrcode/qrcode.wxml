@@ -1,0 +1,48 @@
+<view class="container">
+  <view class="page-title">二维码管理</view>
+  <view class="desc">维护老师微信、微信群、公众号、企业微信二维码</view>
+
+  <view class="card" wx:if="{{contact}}">
+    <!-- 老师微信号 -->
+    <view class="row">
+      <text class="label">老师微信号</text>
+      <text class="value" bindtap="copyWechat" data-wechat="{{contact.teacherWechat}}">
+        {{contact.teacherWechat || '未配置'}}
+      </text>
+    </view>
+
+    <!-- 老师微信二维码 -->
+    <view class="qrcode-item">
+      <text class="label">老师微信二维码</text>
+      <view class="qrcode-wrap" wx:if="{{contact.teacherQrcode}}">
+        <image src="{{contact.teacherQrcode}}" class="qrcode" mode="widthFix" bindtap="previewQrcode" data-url="{{contact.teacherQrcode}}"></image>
+        <text class="tip">点击可放大</text>
+      </view>
+      <text class="empty" wx:else>未配置</text>
+    </view>
+
+    <!-- 学习群二维码 -->
+    <view class="qrcode-item">
+      <text class="label">学习群二维码</text>
+      <view class="qrcode-wrap" wx:if="{{contact.groupQrcode}}">
+        <image src="{{contact.groupQrcode}}" class="qrcode" mode="widthFix" bindtap="previewQrcode" data-url="{{contact.groupQrcode}}"></image>
+        <text class="tip">点击可放大</text>
+      </view>
+      <text class="empty" wx:else>未配置</text>
+    </view>
+
+   
+
+    <!-- 企业微信二维码 -->
+    <view class="qrcode-item">
+      <text class="label">企业微信二维码</text>
+      <view class="qrcode-wrap" wx:if="{{contact.workQrcode}}">
+        <image src="{{contact.workQrcode}}" class="qrcode" mode="widthFix" bindtap="previewQrcode" data-url="{{contact.workQrcode}}"></image>
+        <text class="tip">点击可放大</text>
+      </view>
+      <text class="empty" wx:else>未配置</text>
+    </view>
+  </view>
+
+  <view class="tip">如需修改，请在云数据库 config 集合中更新 contact 字段。</view>
+</view>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI算法测评获客系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 min-h-screen flex items-center justify-center">
+    <div class="text-center px-6">
+        <div class="text-7xl mb-6">🤖</div>
+        <h1 class="text-4xl font-bold text-white mb-4">AI算法测评获客系统</h1>
+        <p class="text-indigo-300 text-lg mb-8">后端服务运行中 · Spring Boot 3.2 · 端口 8082</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-10">
+            <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10">
+                <div class="text-2xl mb-2"><i class="fa fa-mobile"></i></div>
+                <div class="text-white font-medium">小程序端</div>
+                <div class="text-indigo-300 text-sm mt-1">/api/mini/*</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10">
+                <div class="text-2xl mb-2"><i class="fa fa-dashboard"></i></div>
+                <div class="text-white font-medium">管理后台</div>
+                <div class="text-indigo-300 text-sm mt-1">/api/admin/*</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10">
+                <div class="text-2xl mb-2"><i class="fa fa-database"></i></div>
+                <div class="text-white font-medium">数据库</div>
+                <div class="text-indigo-300 text-sm mt-1">MySQL 8.0</div>
+            </div>
+        </div>
+        <div class="space-x-4">
+            <a href="/api/mini/questions" class="inline-block bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-full font-medium transition">
+                <i class="fa fa-list-ul mr-2"></i>查看题目接口
+            </a>
+            <a href="/api/admin/stats/overview" class="inline-block bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full font-medium border border-white/20 transition">
+                <i class="fa fa-bar-chart mr-2"></i>统计概览
+            </a>
+        </div>
+        <p class="text-slate-500 text-sm mt-10">© 2026 AI Assessment System · v1.0.0</p>
+    </div>
+</body>
+</html>

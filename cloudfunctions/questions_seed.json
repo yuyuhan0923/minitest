@@ -1,0 +1,164 @@
+[
+  {
+    "_id": "q13",
+    "title": "你目前 Python 水平如何?",
+    "options": ["没学过", "会基础语法", "会使用 NumPy / Pandas", "能独立写数据处理脚本"],
+    "correctAnswer": "D",
+    "category": "编程基础",
+    "score": 3,
+    "sortOrder": 13
+  },
+  {
+    "_id": "q14",
+    "title": "你是否使用过 Jupyter Notebook?",
+    "options": ["没用过", "用过但不熟", "经常使用", "能熟练做数据分析和模型实验"],
+    "correctAnswer": "D",
+    "category": "编程基础",
+    "score": 3,
+    "sortOrder": 14
+  },
+  {
+    "_id": "q15",
+    "title": "你是否会使用 Git?",
+    "options": ["不会", "会 clone 项目", "会 commit / push", "会分支管理和协作开发"],
+    "correctAnswer": "D",
+    "category": "编程基础",
+    "score": 3,
+    "sortOrder": 15
+  },
+  {
+    "_id": "q16",
+    "title": "你对线性代数掌握如何?",
+    "options": ["不熟悉矩阵", "知道矩阵乘法", "理解向量、矩阵、特征值", "能理解神经网络中的矩阵运算"],
+    "correctAnswer": "D",
+    "category": "数学基础",
+    "score": 3,
+    "sortOrder": 16
+  },
+  {
+    "_id": "q17",
+    "title": "你对概率统计掌握如何?",
+    "options": ["几乎不了解", "知道均值、方差、概率", "理解分布、条件概率", "能理解损失函数和模型评估指标"],
+    "correctAnswer": "D",
+    "category": "数学基础",
+    "score": 3,
+    "sortOrder": 17
+  },
+  {
+    "_id": "q18",
+    "title": "你对微积分掌握如何?",
+    "options": ["不熟悉", "知道导数", "理解梯度", "能理解反向传播中的梯度计算"],
+    "correctAnswer": "D",
+    "category": "数学基础",
+    "score": 3,
+    "sortOrder": 18
+  },
+  {
+    "_id": "q19",
+    "title": "你是否了解监督学习和无监督学习?",
+    "options": ["完全不了解", "听说过", "理解基本区别", "能用于实际项目"],
+    "correctAnswer": "D",
+    "category": "机器学习基础",
+    "score": 3,
+    "sortOrder": 19
+  },
+  {
+    "_id": "q20",
+    "title": "你是否使用过 sklearn?",
+    "options": ["没用过", "跑过示例代码", "用过分类、回归模型", "能完成完整机器学习项目"],
+    "correctAnswer": "D",
+    "category": "机器学习基础",
+    "score": 3,
+    "sortOrder": 20
+  },
+  {
+    "_id": "q21",
+    "title": "你是否理解过拟合和欠拟合?",
+    "options": ["不理解", "听说过", "基本理解", "能通过正则化、交叉验证等方式处理"],
+    "correctAnswer": "D",
+    "category": "机器学习基础",
+    "score": 3,
+    "sortOrder": 21
+  },
+  {
+    "_id": "q22",
+    "title": "你是否理解神经网络的基本结构?",
+    "options": ["不理解", "听说过", "理解输入层、隐藏层、输出层", "能手写简单神经网络代码"],
+    "correctAnswer": "D",
+    "category": "深度学习基础",
+    "score": 3,
+    "sortOrder": 22
+  },
+  {
+    "_id": "q23",
+    "title": "你是否了解 CNN?",
+    "options": ["不了解", "听说过", "理解卷积和池化", "做过图像分类项目"],
+    "correctAnswer": "D",
+    "category": "深度学习基础",
+    "score": 3,
+    "sortOrder": 23
+  },
+  {
+    "_id": "q24",
+    "title": "你是否了解 Transformer?",
+    "options": ["不了解", "听说过", "理解 Attention 基本思想", "阅读过相关代码或论文"],
+    "correctAnswer": "D",
+    "category": "深度学习基础",
+    "score": 3,
+    "sortOrder": 24
+  },
+  {
+    "_id": "q25",
+    "title": "你是否使用过 PyTorch?",
+    "options": ["没用过", "跑过 demo", "会写 Dataset、Model、Training Loop", "能独立训练和调参"],
+    "correctAnswer": "D",
+    "category": "框架工具能力",
+    "score": 3,
+    "sortOrder": 25
+  },
+  {
+    "_id": "q26",
+    "title": "你是否使用过 GPU 训练模型?",
+    "options": ["没用过", "用过 Colab", "会配置 CUDA 环境", "能处理显存不足、训练加速等问题"],
+    "correctAnswer": "D",
+    "category": "框架工具能力",
+    "score": 3,
+    "sortOrder": 26
+  },
+  {
+    "_id": "q27",
+    "title": "你是否用过 Hugging Face?",
+    "options": ["没用过", "听说过", "使用过 tokenizer / model", "能微调模型或部署模型"],
+    "correctAnswer": "D",
+    "category": "框架工具能力",
+    "score": 3,
+    "sortOrder": 27
+  },
+  {
+    "_id": "q28",
+    "title": "你是否完整做过 AI 项目?",
+    "options": ["没有", "跑过别人代码", "改过开源项目", "独立完成过项目"],
+    "correctAnswer": "D",
+    "category": "项目实战能力",
+    "score": 3,
+    "sortOrder": 28
+  },
+  {
+    "_id": "q29",
+    "title": "你是否能处理真实数据集?",
+    "options": ["不会", "会下载数据", "会清洗和划分数据集", "会处理缺失值、类别不平衡、数据增强"],
+    "correctAnswer": "D",
+    "category": "项目实战能力",
+    "score": 3,
+    "sortOrder": 29
+  },
+  {
+    "_id": "q30",
+    "title": "你是否有可以展示的 AI 项目作品?",
+    "options": ["没有", "有简单 demo", "有 GitHub 项目", "有可部署或可演示项目"],
+    "correctAnswer": "D",
+    "category": "项目实战能力",
+    "score": 3,
+    "sortOrder": 30
+  }
+]

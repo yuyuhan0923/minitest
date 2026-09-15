@@ -1,0 +1,72 @@
+<view class="container">
+  <!-- 顶部用户信息 -->
+  <view class="user-card">
+    <image
+      class="avatar"
+      src="{{userInfo.avatarUrl || 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'}}"
+      mode="aspectFill"
+    />
+    <view class="user-info">
+      <view class="nickname">{{userInfo.nickName || '微信用户'}}</view>
+      <view class="user-id">ID: {{userInfo.openid || '未获取'}}</view>
+    </view>
+  </view>
+
+  <!-- 测评相关 -->
+  <view class="menu-section">
+    <view class="menu-title">测评相关</view>
+    <view class="menu-list">
+      <view class="menu-item" bindtap="goToStartExam">
+        <text class="menu-text">开始测评</text>
+        <text class="arrow">></text>
+      </view>
+      <view class="menu-item" bindtap="goToQuestions">
+        <text class="menu-text">浏览题库</text>
+        <text class="arrow">></text>
+      </view>
+      <view class="menu-item" bindtap="goToMaterial">
+        <text class="menu-text">领取学习资料</text>
+        <text class="arrow">></text>
+      </view>
+      <view class="menu-item" bindtap="goToRecord">
+        <text class="menu-text">我的测评记录</text>
+        <text class="arrow">></text>
+      </view>
+      <view class="menu-item" bindtap="goToCourse">
+        <text class="menu-text">试听 / 购买课程</text>
+        <text class="arrow">></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 管理后台入口（仅管理员可见） -->
+  <view class="menu-section" wx:if="{{isAdmin}}">
+    <view class="menu-title">管理员</view>
+    <view class="menu-list">
+      <view class="menu-item" bindtap="goToAdmin">
+        <text class="menu-text">管理后台</text>
+        <text class="arrow">></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 其他功能 -->
+  <view class="menu-section">
+    <view class="menu-title">其他</view>
+    <view class="menu-list">
+      <view class="menu-item" bindtap="clearCache">
+        <text class="menu-text">清除缓存</text>
+        <text class="arrow">></text>
+      </view>
+      <view class="menu-item">
+        <text class="menu-text">版本</text>
+        <text class="version">v1.0.0</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-wrapper">
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view>
+</view>

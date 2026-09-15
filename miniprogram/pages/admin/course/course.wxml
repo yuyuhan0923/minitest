@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="page-title">课程配置</view>
+  <view class="desc">维护课程名称、价格、试听链接、小鹅通购买链接</view>
+
+  <view class="card" wx:if="{{config}}">
+    <view class="row">
+      <text class="label">课程名称</text>
+      <text class="value">{{config.name || '未配置'}}</text>
+    </view>
+    <view class="row">
+      <text class="label">课程价格</text>
+      <text class="value">{{config.price || '未配置'}}</text>
+    </view>
+    <view class="row">
+      <text class="label">课程简介</text>
+      <text class="value">{{config.desc || '未配置'}}</text>
+    </view>
+    <view class="row link-row">
+      <text class="label">试听链接</text>
+      <text class="value link" bindtap="copyLink" data-link="{{config.trialUrl}}">{{config.trialUrl || '未配置'}}</text>
+    </view>
+    <view class="row link-row">
+      <text class="label">购买链接</text>
+      <text class="value link" bindtap="copyLink" data-link="{{config.buyUrl}}">{{config.buyUrl || '未配置'}}</text>
+    </view>
+  </view>
+
+  <view class="tip">如需修改，请在云数据库 config 集合中更新对应字段。</view>
+</view>

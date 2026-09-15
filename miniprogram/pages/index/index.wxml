@@ -1,0 +1,72 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">AI算法能力测评</view>
+    <view class="header-sub">测出你的真实算法水平</view>
+  </view>
+
+  <block wx:if="{{isLoggedIn}}">
+    <view class="stat-row">
+      <view class="stat-item">
+        <view class="stat-value">20</view>
+        <view class="stat-label">题目数量</view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-value">4</view>
+        <view class="stat-label">考察方向</view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-value">5min</view>
+        <view class="stat-label">预计用时</view>
+      </view>
+    </view>
+
+    <view class="admin-card" wx:if="{{adminStats}}" bindtap="goAdmin">
+      <view class="admin-title">📊 管理员数据看板</view>
+      <view class="admin-stats">
+        <view class="admin-stat">
+          <view class="admin-stat-val">{{adminStats.totalExams}}</view>
+          <view class="admin-stat-lbl">累计答题</view>
+        </view>
+        <view class="admin-divider"></view>
+        <view class="admin-stat">
+          <view class="admin-stat-val">{{adminStats.totalLeads}}</view>
+          <view class="admin-stat-lbl">累计留资</view>
+        </view>
+        <view class="admin-divider"></view>
+        <view class="admin-stat">
+          <view class="admin-stat-val">{{adminStats.conversionRate}}%</view>
+          <view class="admin-stat-lbl">转化率</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-title">快捷入口</view>
+    <view class="action-grid">
+      <view class="action-card" bindtap="startExam">
+        <view class="action-icon">🚀</view>
+        <view class="action-name">开始测评</view>
+        <view class="action-desc">立即测试你的AI能力</view>
+      </view>
+      <view class="action-card" bindtap="goQuestions">
+        <view class="action-icon">📚</view>
+        <view class="action-name">浏览题库</view>
+        <view class="action-desc">查看全部测评题目</view>
+      </view>
+      <view class="action-card" bindtap="goProfile">
+        <view class="action-icon">👤</view>
+        <view class="action-name">个人中心</view>
+        <view class="action-desc">查看我的测评记录</view>
+      </view>
+      <view class="action-card" bindtap="goLead">
+        <view class="action-icon">🎁</view>
+        <view class="action-name">领取资料</view>
+        <view class="action-desc">免费获取学习路径</view>
+      </view>
+    </view>
+  </block>
+
+  <view class="login-tip" wx:else>
+    <view class="login-tip-text">登录后即可开始测评，获取专属能力报告</view>
+    <button class="btn-go-login" bindtap="goLogin">立即登录</button>
+  </view>
+</view>

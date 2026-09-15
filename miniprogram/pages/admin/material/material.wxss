@@ -1,0 +1,12 @@
+.container{padding:30rpx;background:#f5f7fa;min-height:100vh;}
+.page-title{font-size:38rpx;font-weight:600;margin-bottom:12rpx;color:#333;}
+.desc{font-size:26rpx;color:#666;margin-bottom:12rpx;}
+.count{font-size:26rpx;color:#666;margin-bottom:30rpx;}
+
+.item{background:#fff;border-radius:20rpx;padding:30rpx;margin-bottom:20rpx;}
+.item-header{margin-bottom:12rpx;}
+.name{font-size:32rpx;font-weight:500;color:#333;}
+.item-desc{font-size:26rpx;color:#666;margin-bottom:16rpx;line-height:1.4;}
+.item-link{margin-bottom:12rpx;}
+.link{font-size:24rpx;color:#1677ff;word-break:break-all;}
+.tip{font-size:24rpx;color:#999;text-align:center;}

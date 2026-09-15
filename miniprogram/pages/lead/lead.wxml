@@ -1,0 +1,89 @@
+<!-- 填写表单阶段 -->
+<view class="container" wx:if="{{step === 'form'}}">
+
+  <view class="hero">
+    <view class="hero-icon">🎁</view>
+    <view class="hero-title">免费领取学习资料包</view>
+    <view class="hero-subtitle">填写手机号或微信号，立即获取</view>
+  </view>
+
+  <!-- 资料列表 -->
+  <view class="material-card">
+    <view class="material-title">资料包含内容</view>
+    <view class="material-item" wx:for="{{materialList}}" wx:key="index">
+      <text class="material-check">✓</text>
+      <text class="material-name">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 表单 -->
+  <view class="form-card">
+    <view class="form-item">
+      <view class="form-label">手机号</view>
+      <input class="form-input" type="number" placeholder="请输入手机号（选填）"
+        maxlength="11" bindinput="onPhoneInput" value="{{phone}}"/>
+    </view>
+    <view class="form-item">
+      <view class="form-label">微信号</view>
+      <input class="form-input" type="text" placeholder="请输入微信号（选填）"
+        bindinput="onWechatInput" value="{{wechat}}"/>
+    </view>
+    <view class="form-item">
+      <view class="form-label">昵称（选填）</view>
+      <input class="form-input" type="text" placeholder="请输入昵称"
+        bindinput="onNicknameInput" value="{{nickname}}"/>
+    </view>
+    <view class="form-tip">手机号和微信号填写一个即可</view>
+    <view class="privacy-tip">
+      <text class="privacy-icon">🔒</text>
+      <text class="privacy-text">您的信息将被严格保密，仅用于发送学习资料</text>
+    </view>
+    <button class="btn-submit" bindtap="submitLead" loading="{{submitting}}">
+      {{submitting ? '提交中...' : '立即领取'}}
+    </button>
+  </view>
+
+</view>
+
+<!-- 领取成功阶段 -->
+<view class="container success-page" wx:elif="{{step === 'success'}}">
+
+  <view class="success-hero">
+    <view class="success-icon">🎉</view>
+    <view class="success-title">领取成功！</view>
+    <view class="success-desc">添加老师微信，即可获取全部资料</view>
+  </view>
+
+  <!-- 老师微信二维码 -->
+  <view class="qr-card">
+    <view class="qr-title">扫码添加老师微信</view>
+    <image class="qr-image" src="{{teacherQrcodeUrl}}" mode="aspectFit"
+      wx:if="{{teacherQrcodeUrl}}" show-menu-by-longpress="true"/>
+    <view class="qr-placeholder" wx:else>
+      <text class="qr-placeholder-text">二维码配置中，请直接搜索微信号添加</text>
+    </view>
+    <view class="wechat-row">
+      <text class="wechat-label">微信号：</text>
+      <text class="wechat-val">{{teacherWechatId}}</text>
+    </view>
+    <view class="qr-btns">
+      <button class="btn-copy-wechat" bindtap="copyWechat">复制微信号</button>
+      <button class="btn-save-qr" bindtap="saveQrcode" wx:if="{{teacherQrcodeUrl}}">保存二维码</button>
+    </view>
+    <view class="qr-tip">长按二维码图片可直接识别添加</view>
+  </view>
+
+  <!-- 资料清单 -->
+  <view class="material-card">
+    <view class="material-title">你将获得以下资料</view>
+    <view class="material-item" wx:for="{{materialList}}" wx:key="index">
+      <text class="material-check">✓</text>
+      <text class="material-name">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="back-wrap">
+    <button class="btn-back" bindtap="goBack">返回测评结果</button>
+  </view>
+
+</view>

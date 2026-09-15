@@ -1,0 +1,149 @@
+<view class="container">
+
+  <!-- 顶部标题栏 -->
+  <view class="page-header">
+    <view class="page-title">测评记录管理</view>
+    <text class="total-count" wx:if="{{!loading && !error}}">共 {{total}} 条</text>
+  </view>
+
+  <!-- 等级筛选 -->
+  <view class="filter-bar">
+    <text class="filter-label">等级</text>
+    <text class="filter-chip {{filterLevel === '' ? 'active' : ''}}"
+          bindtap="onLevelFilter" data-val="">全部</text>
+    <text class="filter-chip {{filterLevel === '专家级' ? 'active' : ''}}"
+          bindtap="onLevelFilter" data-val="专家级">专家级</text>
+    <text class="filter-chip {{filterLevel === '实战级' ? 'active' : ''}}"
+          bindtap="onLevelFilter" data-val="实战级">实战级</text>
+    <text class="filter-chip {{filterLevel === '进阶级' ? 'active' : ''}}"
+          bindtap="onLevelFilter" data-val="进阶级">进阶级</text>
+    <text class="filter-chip {{filterLevel === '基础级' ? 'active' : ''}}"
+          bindtap="onLevelFilter" data-val="基础级">基础级</text>
+    <text class="filter-chip {{filterLevel === '入门级' ? 'active' : ''}}"
+          bindtap="onLevelFilter" data-val="入门级">入门级</text>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="state-box" wx:if="{{loading}}">
+    <text class="state-text">加载中...</text>
+  </view>
+
+  <!-- 错误提示 -->
+  <view class="state-box" wx:elif="{{error}}">
+    <text class="error-text">{{error}}</text>
+    <text class="retry-btn" bindtap="retry">重试</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="state-box" wx:elif="{{list.length === 0}}">
+    <text class="state-text">暂无测评记录</text>
+  </view>
+
+  <!-- 记录列表 -->
+  <view wx:else>
+    <view class="item"
+          wx:for="{{list}}"
+          wx:key="_id"
+          bindtap="openDetail"
+          data-id="{{item._id}}">
+
+      <!-- 用户信息行 -->
+      <view class="user-row">
+        <text class="user-name">{{item.userInfo.nickname || '微信用户'}}</text>
+        <text class="level-tag">{{item.level || '-'}}</text>
+      </view>
+
+      <!-- 手机号（有则显示） -->
+      <view class="phone-row" wx:if="{{item.userInfo.phone}}">
+        <text class="phone-text">{{item.userInfo.phone}}</text>
+      </view>
+
+      <!-- 分数行 -->
+      <view class="score-row">
+        <text class="score-main">{{item.totalScore}} / {{item.maxScore}} 分</text>
+        <text class="score-pct" wx:if="{{item.maxScore > 0}}">
+          {{item.totalScore * 100 / item.maxScore | floor}}%
+        </text>
+      </view>
+
+      <!-- 分类得分 -->
+      <view class="cat-box" wx:if="{{item.categoryScores.length > 0}}">
+        <block wx:for="{{item.categoryScores}}" wx:for-item="cat" wx:key="category">
+          <text class="cat-chip">{{cat.category}} {{cat.score}}/{{cat.maxScore}}</text>
+        </block>
+      </view>
+
+      <!-- 时间 + openid -->
+      <view class="meta-row">
+        <text class="meta-time">{{item.createdAt}}</text>
+        <text class="meta-openid">{{item.openid}}</text>
+      </view>
+    </view>
+
+    <!-- 分页 -->
+    <view class="pagination">
+      <text class="page-btn {{page <= 1 ? 'disabled' : ''}}" bindtap="prevPage">上一页</text>
+      <text class="page-info">{{page}} / {{totalPages}}</text>
+      <text class="page-btn {{page >= totalPages ? 'disabled' : ''}}" bindtap="nextPage">下一页</text>
+    </view>
+  </view>
+
+</view>
+
+<!-- 详情弹层 -->
+<view class="mask" wx:if="{{detailVisible}}" bindtap="closeDetail">
+  <view class="detail-panel" catchtap="stopPropagation">
+
+    <view class="detail-header">
+      <text class="detail-title">测评详情</text>
+      <text class="detail-close" bindtap="closeDetail">✕</text>
+    </view>
+
+    <scroll-view scroll-y class="detail-body" wx:if="{{detailRecord}}">
+
+      <view class="d-row">
+        <text class="d-label">用户</text>
+        <text class="d-value">{{detailRecord.userInfo.nickname}}</text>
+      </view>
+      <view class="d-row" wx:if="{{detailRecord.userInfo.phone}}">
+        <text class="d-label">手机号</text>
+        <text class="d-value">{{detailRecord.userInfo.phone}}</text>
+      </view>
+      <view class="d-row">
+        <text class="d-label">OpenID</text>
+        <text class="d-value d-openid">{{detailRecord.openid}}</text>
+      </view>
+      <view class="d-row">
+        <text class="d-label">测评等级</text>
+        <text class="d-value level-tag">{{detailRecord.level}}</text>
+      </view>
+      <view class="d-row">
+        <text class="d-label">总分</text>
+        <text class="d-value">{{detailRecord.totalScore}} / {{detailRecord.maxScore}}</text>
+      </view>
+      <view class="d-row">
+        <text class="d-label">测评时间</text>
+        <text class="d-value">{{detailRecord.createdAt}}</text>
+      </view>
+
+      <!-- 分类得分 -->
+      <view class="d-section" wx:if="{{detailRecord.categoryScores.length > 0}}">
+        <text class="d-section-title">分类得分</text>
+        <view class="d-cat-row" wx:for="{{detailRecord.categoryScores}}" wx:for-item="cat" wx:key="category">
+          <text class="d-cat-name">{{cat.category}}</text>
+          <text class="d-cat-score">{{cat.score}} / {{cat.maxScore}}</text>
+        </view>
+      </view>
+
+      <!-- 学习建议 -->
+      <view class="d-section" wx:if="{{detailRecord.suggestions.length > 0}}">
+        <text class="d-section-title">学习建议</text>
+        <view class="d-suggest" wx:for="{{detailRecord.suggestions}}" wx:key="*this">
+          <text class="d-suggest-dot">·</text>
+          <text class="d-suggest-text">{{item}}</text>
+        </view>
+      </view>
+
+    </scroll-view>
+  </view>
+</view>

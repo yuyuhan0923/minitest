@@ -1,0 +1,88 @@
+<view class="buy-page">
+  <!-- 顶部课程头图 -->
+  <view class="course-header">
+    <view class="course-title">{{courseName}}</view>
+  </view>
+
+  <!-- 课程亮点 -->
+  <view class="course-highlights">
+    <view class="section-title">课程亮点</view>
+    <view class="highlight-item">✅ 从Python基础到模型部署，零基础可学</view>
+    <view class="highlight-item">✅ 30天高强度实战，掌握AI算法核心技能</view>
+    <view class="highlight-item">✅ 实战项目 + 作业批改 + 1v1答疑</view>
+    <view class="highlight-item">✅ 提供简历指导 + 内推机会</view>
+  </view>
+
+  <!-- 价格区 -->
+  <view class="price-section">
+    <view class="original-price">原价 ¥1299</view>
+    <view class="current-price">{{coursePrice}}</view>
+    <view class="price-tip">现在报名，再送3个月社群答疑</view>
+  </view>
+
+  <!-- 行动按钮 -->
+  <view class="action-buttons">
+    <button class="btn btn-consult" bindtap="consultTeacher">立即咨询</button>
+    <button class="btn btn-group" bindtap="joinGroup">进群试听</button>
+  </view>
+
+  <!-- 购买按钮区 -->
+  <view class="buy-buttons">
+    <button class="btn-buy-trial" bindtap="joinTrial">免费试听</button>
+    <button class="btn-buy-now" bindtap="goBuy">立即购买</button>
+  </view>
+
+  <!-- 常见问题 -->
+  <view class="faq-section">
+    <view class="section-title">常见问题</view>
+    <view class="faq-item">
+      <view class="faq-question">Q：课程有录播吗？错过直播怎么办？</view>
+      <view class="faq-answer">A：所有课程均提供高清录播，永久有效，随时回看。</view>
+    </view>
+    <view class="faq-item">
+      <view class="faq-question">Q：可以开发票吗？</view>
+      <view class="faq-answer">A：支持开具增值税普通发票，报名后联系老师申请。</view>
+    </view>
+    <view class="faq-item">
+      <view class="faq-question">Q：学完能找到工作吗？</view>
+      <view class="faq-answer">A：我们提供简历优化、模拟面试和内推机会，往期学员就业率超85%。</view>
+    </view>
+  </view>
+</view>
+
+<!-- 购买弹窗 -->
+<view class="popup-mask" wx:if="{{showBuyPopup}}" bindtap="closeBuyPopup">
+  <view class="popup-content" catchtap="stopClose">
+    <view class="popup-title">确认购买</view>
+    <view class="popup-item">
+      <text>商品名称</text>
+      <text class="text-right">{{goodsName}}</text>
+    </view>
+    <view class="popup-item price-item">
+      <text>支付金额</text>
+      <text class="price">¥{{price}}</text>
+    </view>
+    <view class="popup-desc">{{desc}}</view>
+    <view class="popup-buttons">
+      <button class="btn-cancel" bindtap="closeBuyPopup">取消</button>
+      <button class="btn-confirm" bindtap="onBuy">确认支付</button>
+    </view>
+  </view>
+</view>
+
+<!-- 老师微信弹窗 -->
+<view class="modal-mask" wx:if="{{showTeacherModal}}" bindtap="closePopup">
+  <view class="modal-card" catchtap="noop">
+    <view class="modal-title">👨‍🏫 添加老师微信</view>
+    <image src="/images/teacher_wechat.png" class="qr-image" mode="widthFix"></image>
+    <view class="qr-hint">长按识别二维码添加老师</view>
+    <view class="wechat-id-row">
+      <text class="wechat-id-label">微信号：</text>
+      <text class="wechat-id-val">{{teacherWechatId}}</text>
+    </view>
+    <view class="modal-btns">
+      <button class="btn-modal-copy" bindtap="copyWechat">复制微信号</button>
+    </view>
+    <text class="modal-close" bindtap="closePopup">关闭</text>
+  </view>
+</view>

@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="page-title">用户管理</view>
+  <view class="desc">查看用户基本信息、联系方式、测评等级、行为标签</view>
+
+  <view wx:if="{{loading}}" class="loading-tip">加载中...</view>
+
+  <view class="list" wx:else>
+    <view class="item" wx:for="{{list}}" wx:key="openid">
+      <view class="info-row">
+        <text class="label">用户昵称</text>
+        <text class="value">{{item.nickname || '微信用户'}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">联系方式</text>
+        <text class="value">{{item.phone || '-'}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">测评等级</text>
+        <text class="tag level">{{item.assessLevel || '初级'}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">行为标签</text>
+        <text class="tag">{{item.behaviorTag || '-'}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">注册时间</text>
+        <text class="value">{{item.createTime}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">今日测评</text>
+        <text class="value">{{item.todayExams}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">累计测评</text>
+        <text class="value">{{item.totalExams}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">留资状态</text>
+        <text class="value">{{item.hasLead === 1 ? '已留资' : '未留资'}}</text>
+      </view>
+    </view>
+  </view>
+</view>

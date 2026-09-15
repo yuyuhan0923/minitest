@@ -1,0 +1,45 @@
+page {
+  background-color: #f5f7fa;
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 通用按钮 */
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 50rpx;
+  border: none;
+  font-size: 32rpx;
+  font-weight: 600;
+  padding: 0 60rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+}
+.btn-primary::after { border: none; }
+
+.btn-secondary {
+  background: #f0f0f5;
+  color: #666;
+  border-radius: 50rpx;
+  border: none;
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.btn-secondary::after { border: none; }
+
+/* 通用卡片 */
+.card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 36rpx;
+  box-shadow: 0 4rpx 24rpx rgba(0,0,0,0.06);
+  margin: 20rpx 30rpx;
+}
+
+/* 安全区底部 */
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }

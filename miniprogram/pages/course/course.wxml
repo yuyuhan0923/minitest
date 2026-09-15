@@ -1,0 +1,56 @@
+<view class="container">
+
+  <!-- 加载中 -->
+  <view class="state-box" wx:if="{{loading}}">
+    <text class="state-text">加载中...</text>
+  </view>
+
+  <!-- 错误 -->
+  <view class="state-box" wx:elif="{{error}}">
+    <text class="error-text">{{error}}</text>
+    <text class="retry-btn" bindtap="retry">重试</text>
+  </view>
+
+  <!-- 课程内容 -->
+  <view wx:elif="{{config}}">
+
+    <!-- 顶部课程卡片 -->
+    <view class="course-hero">
+      <view class="course-badge">AI 实战课程</view>
+      <view class="course-name">{{config.courseName}}</view>
+      <view class="course-desc" wx:if="{{config.courseDesc}}">{{config.courseDesc}}</view>
+      <view class="price-row">
+        <text class="course-price">{{config.coursePrice}}</text>
+        <text class="discount-tag" wx:if="{{config.discountText}}">{{config.discountText}}</text>
+      </view>
+    </view>
+
+    <!-- 课程亮点 -->
+    <view class="section" wx:if="{{config.highlights.length > 0}}">
+      <view class="section-title">课程亮点</view>
+      <view class="highlight-list">
+        <view class="highlight-item" wx:for="{{config.highlights}}" wx:key="index">
+          <text class="highlight-dot">✅</text>
+          <text class="highlight-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 行动按钮 -->
+    <view class="action-area">
+      <button class="btn-trial" bindtap="goTrial">
+        <text class="btn-icon-text">🎧</text>
+        <text>免费试听</text>
+      </button>
+      <button class="btn-buy" bindtap="goBuy">
+        <text class="btn-icon-text">🚀</text>
+        <text>立即购买</text>
+      </button>
+    </view>
+
+    <!-- 底部提示 -->
+    <view class="bottom-tip">点击「免费试听」可先体验课程内容</view>
+
+  </view>
+
+</view>

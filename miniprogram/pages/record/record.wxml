@@ -1,0 +1,31 @@
+<view class="container">
+  <!-- 顶部标题栏 -->
+  <view class="header">
+    <view class="back" bindtap="goBack">←</view>
+    <view class="title">测评记录</view>
+  </view>
+
+  <!-- 统计信息 -->
+  <view class="count">共 {{list.length}} 次测评</view>
+
+  <!-- 测评记录列表 -->
+  <view class="list" wx:if="{{!loading && list.length > 0}}">
+    <view class="item" wx:for="{{list}}" wx:key="_id" bindtap="goToResult" data-id="{{item._id}}">
+      <view class="item-left">
+        <view class="item-title">AI算法测评</view>
+        <view class="item-desc">{{item.evalText || '[object Object]'}}</view>
+      </view>
+      <view class="item-right">
+        <view class="item-score">{{item.totalScore}} / {{item.maxScore}}</view>
+        <view class="item-level">{{item.level}}</view>
+      </view>
+      <view class="arrow">></view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:elif="{{!loading && list.length === 0}}">暂无测评记录</view>
+
+  <!-- 加载中 -->
+  <view class="loading" wx:else>加载中...</view>
+</view>

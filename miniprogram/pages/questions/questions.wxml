@@ -1,0 +1,48 @@
+<view class="container">
+  <!-- 分类筛选 -->
+  <scroll-view class="category-bar" scroll-x>
+    <view class="category-list">
+      <view
+        class="cat-tag {{(filterCategory === '' && item === '全部') || filterCategory === item ? 'active' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="index"
+        bindtap="switchCategory"
+        data-cat="{{item}}"
+      >{{item}}</view>
+    </view>
+  </scroll-view>
+
+  <!-- 加载中 -->
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <view class="loading-text">加载题目中...</view>
+  </view>
+
+  <!-- 题目列表 -->
+  <view wx:else>
+    <view class="q-count">共 {{questions.length}} 道题目</view>
+    <view
+      class="q-card"
+      wx:for="{{questions}}"
+      wx:key="id"
+      wx:if="{{!filterCategory || item.category === filterCategory}}"
+    >
+      <view class="q-header" bindtap="toggleQuestion" data-idx="{{index}}">
+        <view class="q-meta">
+          <view class="q-num">{{index + 1}}</view>
+          <view class="q-cat-tag">{{item.category}}</view>
+          <view class="q-score">{{item.score}}分</view>
+        </view>
+        <view class="q-arrow">{{item._expanded ? '▲' : '▼'}}</view>
+      </view>
+      <view class="q-title">{{item.title}}</view>
+
+      <!-- 展开选项 -->
+      <view class="q-options" wx:if="{{item._expanded}}">
+        <view class="q-option" wx:for="{{item.optionsJson}}" wx:for-item="opt" wx:key="key">
+          <text class="opt-key">{{opt.key}}</text>
+          <text class="opt-text">{{opt.text}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

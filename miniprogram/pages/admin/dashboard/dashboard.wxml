@@ -1,0 +1,181 @@
+<view class="container">
+  <view class="header">
+    <text class="header-title">管理后台</text>
+    <text class="logout-btn" bindtap="logout">退出</text>
+  </view>
+
+  <view class="login-time-card">
+    <text class="login-time-label">本次登录</text>
+    <text class="login-time-value">{{loginTime}}</text>
+  </view>
+
+  <view class="stat-grid" wx:if="{{stats}}">
+    <view class="stat-card">
+      <view class="stat-num">{{stats.totalUsers}}</view>
+      <view class="stat-label">注册用户</view>
+    </view>
+    <view class="stat-card">
+      <view class="stat-num">{{stats.totalExam}}</view>
+      <view class="stat-label">完成测评</view>
+    </view>
+    <view class="stat-card blue">
+      <view class="stat-num">{{stats.totalLead}}</view>
+      <view class="stat-label">留资人数</view>
+    </view>
+    <view class="stat-card blue">
+      <view class="stat-num">{{stats.conversionRate}}</view>
+      <view class="stat-label">转化率</view>
+    </view>
+    <view class="stat-card green">
+      <view class="stat-num">{{stats.visitCount}}</view>
+      <view class="stat-label">访问人数</view>
+    </view>
+    <view class="stat-card orange">
+      <view class="stat-num">{{stats.buyClickCount}}</view>
+      <view class="stat-label">点击购买人数</view>
+    </view>
+  </view>
+  <view class="stat-loading" wx:elif="{{loading}}">数据加载中...</view>
+
+  <view class="section-title">功能入口</view>
+  <view class="entry-grid">
+    <view class="entry-card" bindtap="openUserPanel">
+      <text class="entry-icon">👥</text>
+      <text class="entry-label">用户管理</text>
+    </view>
+    <view class="entry-card" bindtap="go" data-url="/pages/admin/records/records">
+      <text class="entry-icon">📊</text>
+      <text class="entry-label">测评记录</text>
+    </view>
+    <view class="entry-card" bindtap="go" data-url="/pages/admin/question/question">
+      <text class="entry-icon">📝</text>
+      <text class="entry-label">题库管理</text>
+    </view>
+    <view class="entry-card" bindtap="go" data-url="/pages/admin/course/course">
+      <text class="entry-icon">🎓</text>
+      <text class="entry-label">课程配置</text>
+    </view>
+    <view class="entry-card" bindtap="go" data-url="/pages/admin/material/material">
+      <text class="entry-icon">📦</text>
+      <text class="entry-label">资料配置</text>
+    </view>
+    <view class="entry-card" bindtap="go" data-url="/pages/admin/qrcode/qrcode">
+      <text class="entry-icon">📱</text>
+      <text class="entry-label">二维码管理</text>
+    </view>
+  </view>
+</view>
+
+<view class="panel-mask" wx:if="{{panelVisible}}" bindtap="closeUserPanel">
+  <view class="panel" catchtap="stopPropagation">
+    <view class="panel-header">
+      <text class="panel-title">用户管理（{{filteredList.length}} 人）</text>
+      <text class="panel-close" bindtap="closeUserPanel">✕</text>
+    </view>
+
+    <view class="panel-search">
+      <input class="search-input" placeholder="搜索昵称 / 手机号 / OpenID" value="{{userKeyword}}" bindinput="onKeywordInput" />
+    </view>
+
+    <view class="filter-bar">
+      <text class="filter-label">等级</text>
+      <text class="filter-chip {{filterLevel === '初级' ? 'active' : ''}}" bindtap="onLevelFilter" data-val="初级">初级</text>
+      <text class="filter-chip {{filterLevel === '中级' ? 'active' : ''}}" bindtap="onLevelFilter" data-val="中级">中级</text>
+      <text class="filter-chip {{filterLevel === '高级' ? 'active' : ''}}" bindtap="onLevelFilter" data-val="高级">高级</text>
+      <text class="filter-label" style="margin-left:16rpx">标签</text>
+      <text class="filter-chip {{filterTag === '活跃' ? 'active' : ''}}" bindtap="onTagFilter" data-val="活跃">活跃</text>
+      <text class="filter-chip {{filterTag === '新用户' ? 'active' : ''}}" bindtap="onTagFilter" data-val="新用户">新用户</text>
+      <text class="filter-chip {{filterTag === '沉默' ? 'active' : ''}}" bindtap="onTagFilter" data-val="沉默">沉默</text>
+    </view>
+
+    <view class="panel-body">
+      <view class="user-loading" wx:if="{{userLoading}}">加载中...</view>
+      <view wx:elif="{{userError}}" class="user-error">
+        <text>{{userError}}</text>
+        <text class="retry-btn" bindtap="loadUsers"> 重试</text>
+      </view>
+      <view wx:elif="{{pagedList.length === 0}}" class="user-empty">暂无数据</view>
+      <view wx:else>
+        <view
+          class="user-item"
+          wx:for="{{pagedList}}"
+          wx:key="openid"
+          bindtap="openDetail"
+          data-openid="{{item.openid}}"
+        >
+          <view class="user-row">
+            <text class="user-name">{{item.nickname || '微信用户'}}</text>
+            <text class="user-level {{item.levelClass}}">{{item.assessLevel || '初级'}}</text>
+          </view>
+          <view class="user-row">
+            <text class="user-phone">{{item.phone || '-'}}</text>
+            <text class="user-tag {{item.tagClass}}">{{item.behaviorTag || '-'}}</text>
+          </view>
+          <view class="user-meta">
+            <text>今日 {{item.todayExams}}</text>
+            <text class="meta-dot">·</text>
+            <text>累计 {{item.totalExams}}</text>
+            <text class="meta-dot">·</text>
+            <text wx:if="{{item.hasLead === 1}}" class="lead-yes">已留资</text>
+            <text wx:else class="lead-no">未留资</text>
+          </view>
+        </view>
+
+        <view class="pagination">
+          <text class="page-btn {{page <= 1 ? 'disabled' : ''}}" bindtap="prevPage">上一页</text>
+          <text class="page-info">{{page}} / {{totalPages}}</text>
+          <text class="page-btn {{page >= totalPages ? 'disabled' : ''}}" bindtap="nextPage">下一页</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="panel-mask" wx:if="{{detailVisible}}" bindtap="closeDetail">
+  <view class="detail-panel" catchtap="stopPropagation">
+    <view class="panel-header">
+      <text class="panel-title">用户详情</text>
+      <text class="panel-close" bindtap="closeDetail">✕</text>
+    </view>
+    <view class="detail-loading" wx:if="{{detailLoading}}">加载中...</view>
+    <view wx:elif="{{detailUser}}" class="detail-body">
+      <view class="detail-row">
+        <text class="detail-label">OpenID</text>
+        <text class="detail-value detail-openid">{{detailUser.openid}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">昵称</text>
+        <text class="detail-value">{{detailUser.nickname || '微信用户'}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">手机号</text>
+        <text class="detail-value">{{detailUser.phone || '-'}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">测评等级</text>
+        <text class="detail-value {{detailUser.levelClass}}">{{detailUser.assessLevel || '初级'}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">行为标签</text>
+        <text class="detail-value {{detailUser.tagClass}}">{{detailUser.behaviorTag || '-'}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">注册时间</text>
+        <text class="detail-value">{{detailUser.createTime}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">今日测评</text>
+        <text class="detail-value">{{detailUser.todayExams}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">累计测评</text>
+        <text class="detail-value">{{detailUser.totalExams}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">留资状态</text>
+        <text class="detail-value lead-yes" wx:if="{{detailUser.hasLead === 1}}">已留资</text>
+        <text class="detail-value lead-no" wx:else>未留资</text>
+      </view>
+    </view>
+  </view>
+</view>

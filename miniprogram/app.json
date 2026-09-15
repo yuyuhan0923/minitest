@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/questions/questions",
+    "pages/exam/exam",
+    "pages/result/result",
+    "pages/lead/lead",
+    "pages/profile/profile",
+    "pages/webview/webview",
+    "pages/buy/buy",
+    "pages/record/record",
+    "pages/course/course",
+    "pages/admin/login/login",
+    "pages/admin/dashboard/dashboard",
+    "pages/admin/users/users",
+    "pages/admin/records/records",
+    "pages/admin/question/question",
+    "pages/admin/course/course",
+    "pages/admin/qrcode/qrcode",
+    "pages/admin/material/material"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1a1a2e",
+    "navigationBarTitleText": "AI算法测评",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f7fa"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#667eea",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/questions/questions",
+        "text": "题库",
+        "iconPath": "images/tab-book.png",
+        "selectedIconPath": "images/tab-book-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/tab-user.png",
+        "selectedIconPath": "images/tab-user-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "navigateToMiniProgramAppIdList": [
+    "wxeb498c6f9b91ef86d"
+  ]
+}

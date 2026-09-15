@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="page-title">资料配置</view>
+  <view class="desc">维护资料包名称、简介、下载链接</view>
+  <view class="count">共 {{list.length}} 份资料</view>
+
+  <view class="list">
+    <view class="item" wx:for="{{list}}" wx:key="id">
+      <view class="item-header">
+        <text class="name">{{item.title}}</text>
+      </view>
+      <view class="item-desc">{{item.desc}}</view>
+      <view class="item-link">
+        <text class="link" bindtap="copyLink" data-link="{{item.downloadUrl}}">下载链接：{{item.downloadUrl}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="tip">如需修改，请在云数据库 config 集合中更新 materialList 字段。</view>
+</view>
